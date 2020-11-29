@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+<!--            <a class="navbar-brand" href="index.php"><img src="Images1/Bees.png" style="margin-top: -5px;"></a>-->
+            <a class="navbar-brand" href="index.php">IIUC S<span style="font-size:20px; ">QLInject</span>ors </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.php " style="color:#5ABAC6;  ">Home</a></li>
+                <li><a href="blog/">Blog </a></li>
+                <li><a href="contact.php">Contacts</a></li>
+                <?php require_once("hotel_login.php"); ?>
+                <li><a href="about.php">About</a></li>
+                <?php
+                ob_start();
+                //ekhan theke
+                if (!$session->is_signed_in()) {
+                    require_once("login.php");
+                } else {
+                    if ($_SESSION["user_id"]) {
+                        $id = $_SESSION["user_id"];
+                        require_once("loggedin.php");
+                    } else {
+                        $session->admin_logout();
+                        require_once("login.php");
+                    }
+                }
+                ?>
+            </ul>
+            <!-- Modal -->
+        </div>
+        </div>
+        </div>
+        </div>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+    <title>Welcome to BDTTMS</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        media="all">
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
+
+    <!--Google fronts-->
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+
+    <!--Google fronts End-->
+    <!--Date picker Start-->
+    <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+    <!--Date picker End-->
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/contact.css" rel="stylesheet" type="text/css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="js/jquery.shuffle-images.js"></script>
+
+
+    <script>
+        $(function () {
+            $('#from_city').autocomplete({
+                source: 'includes/info.php'
+            });
+        });
+        $(function () {
+            $('#to_city').autocomplete({
+                source: 'includes/info.php'
+            });
+        });
+    </script>
+</head>
+
+<body style="background-color:white">
+    <div class="background-img">
+        <div>
+            <div class=" background-text">
+                <h1 class="">Explore World With Trip Planner</h1>
+                <h3 class="">A Trip Planning Site For Explore the country
+                </h3>
+            </div>
+        </div>
+        <!--Hotel booking form start-->
+
+
+        <div class="container-fluid">
+            <div>
+                <div class=" col-md-11  image-form-div"
+                    style="background: #F8F8F8;  border-radius: 10px; box-shadow: 3px 3px 10px gray; margin-top: 20px;">
+                    <form action="showdirection.php" method="post" target="_blank" class="form-inline image-form">
+                        <div class="form-group">
+                            <input type="text" name="fromCity" id="from_city" class="form-control "
+                                placeholder="Your Location">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="toCity" id="to_city" class="form-control "
+                                placeholder="Your Destination">
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-daterange">
+                                <input type="text" name="startDate" class="form-control" value=""
+                                    placeholder="Start Tour ">
+                                <div class="input-group-addon"><i class="glyphicon glyphicon-arrow-right"></i></div>
+                                <input type="text" name="endDate" class="form-control" value="" placeholder="End Tour">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <select name="member" class="form-control" style="width: 160px;">
+                                <option disabled selected>Member</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" value="Make A Plan"
+                                class=" btn btn-primary form-control   submit-btn button-book-now"
+                                style="width: 200px;">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Hotel booking form end-->
+    </div>
+    <!--Slider End-->
+    <!--Easy to use, easy to browse Start-->
+
+
+    <div class="container">
+        <h2 class="no-background"><span class="span-heading">Easy to use, easy to browse</span></h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <div class="circle col-md-offset-2 circle-logo "><i class="fa fa-map-marker fa-4x"
+                                aria-hidden="true" style="margin: 20px 35px"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <div class="circle col-md-offset-2 circle-logo "><i class="fa fa-calendar-check-o fa-4x"
+                                aria-hidden="true" style="margin: 20px 23px"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <div class="circle col-md-offset-2 circle-logo "><i class="fa fa-plane fa-4x" aria-hidden="true"
+                                style="margin: 20px 25px"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <div class="circle col-md-offset-2 circle-logo "><i class="fa fa-suitcase fa-4x"
+                                aria-hidden="true" style="margin: 20px 21px"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    <h3 style="margin-left: 28px;">Make a plan</h3>
+                </div>
+
+                <div class="col-md-1" style="margin-left: 10px;">
+                    <img src="Images1/arrow.png" style="margin-top: 23px; ">
+                </div>
+
+                <div class="col-md-2" style="margin-left: 20px;">
+                    <h3 style="margin-left: 20px;">Customize it</h3>
+                </div>
+
+                <div class="col-md-1">
+                    <img src="Images1/arrow.png" style="margin-top: 23px; ">
+                </div>
+
+                <div class="col-md-2">
+                    <h3 style="margin-left: 50px;">Book it</h3>
+                </div>
+
+                <div class="col-md-1">
+                    <img src="Images1/arrow.png" style="margin-top: 23px; ">
+                </div>
+
+                <div class="col-md-2">
+                    <h3 style="margin-left: 40px;">Manage it</h3>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="col-md-3 text-center" style="margin-left: -30px;">
+                    <p>A complete day-by-day itinerary<br>
+                        based on your preferences</p>
+                </div>
+
+                <div class="col-md-3 text-center" style="margin-left: 30px;">
+                    <p>Refine your plan. We'll find<br> the
+                        best routes and schedules</p>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <p>Choose from the best hotels
+                        and<br> activities. Up to 50% off</p>
+                </div>
+
+                <div class="col-md-3 text-center">
+                    <p>Everything in one place.<br>
+                        Everyone on the same page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Easy to use, easy to browse End-->
+    <!--Find destination-->
+    <div class="container">
+        <h2 class="no-background"><span class="span-heading">Popular Destination</span></h2>
+    </div>
+
+    <div class="wrapper">
+        <div class="main">
+            <div class="container-img">
+                <div class="shuffle-group">
+                    <div data-si-mousemove-trigger="100" class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The Cox's Bazar</h1>
+                            <h2 class=" h1_info">Visit the world longest sea beach</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/115930470.jpg" style="height: 430px">
+                            <img src="Images1/2 (1).jpg" style="height: 430px">
+                            <img src="Images1/sunset-over-cox-s-bazar.jpg" style="height: 430px">
+                            <img src="Images1/sail-the-fishing-boat-is-coxs-bazar-tour-with-deshghuri.jpg"
+                                style="height: 432px">
+                            <img src="Images1/HT_barbados_MEM_151120_16x9_992.jpg" style="height: 430px">
+                        </div>
+                    </div>
+
+                    <div class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The Bandarban</h1>
+                            <h2 class=" h1_info">A district of green beauty</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/bandarban/images.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/bandarban/Nilgiri Resort.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/bandarban/sajek.jpg" style="height: 210px; width: 320px">
+                        </div>
+                    </div>
+
+                    <div class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The Sajek Valley</h1>
+                            <h2 class=" h1_info"> an emerging tourist spot in Bangladesh</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/sajek/download.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sajek/images (2).jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sajek/megh-machang-at-sajek.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sajek/richang.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sajek/sajek.jpg" style="height: 210px; width: 320px">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shuffle-group">
+                    <div data-si-mousemove-trigger="100" class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The Sundarbans</h1>
+                            <h2 class=" h1_info">one of the largest such forests in the world </h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/sundarbans/shundarban.jpg" style="height: 430px">
+                            <img src="Images1/sundarbans/tiger.jpg" style="height: 430px">
+                            <img src="Images1/sundarbans/22912101039_160e96ffa1_b.jpg" style="height: 430px">
+                            <img src="Images1/sundarbans/golpata.jpg" style="height: 430px">
+                            <img src="Images1/sundarbans/Hiron-Point-Sundarban-Bangladesh.jpg" style="height: 430px">
+                            <img src="Images1/sundarbans/Hive in Sundarban.jpg" style="height: 430px">
+                            <img src="Images1/sundarbans/Sundarban+Bangladesh.jpg" style="height: 430px">
+                        </div>
+                    </div>
+
+                    <div class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">Mosque city bagaerhat</h1>
+                            <h2 class=" h1_info">Its a full of beautiful historic mosques</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/bagerhat/download (1).jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/bagerhat/85451_93923_49636.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/bagerhat/images.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/bagerhat/download.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/bagerhat/5054472_f520.jpg" style="height: 210px; width: 320px">
+                        </div>
+                    </div>
+                    <div class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The sonargaon</h1>
+                            <h2 class=" h1_info">historic administrative, commercial and maritime centre in Bengal</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/sonargaon/images.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sonargaon/images (1).jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sonargaon/images (2).jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sonargaon/images (3).jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/sonargaon/sonargaon 2.jpg" style="height: 210px; width: 320px">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shuffle-group">
+                    <div data-si-mousemove-trigger="100" class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The Sylhet</h1>
+                            <h2 class=" h1_info">Sylhet is the naturally beautiful place in the north-eastern part of
+                                bangladesh</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/sylhet/7bca13f5f36725de7f2d4f7726766177.jpg" style="height: 430px">
+                            <img src="Images1/sylhet/images.jpg" style="height: 430px">
+                            <img src="Images1/sylhet/private-tour-sylhet-full-day-tour-of-ratargul-and-bisnakandi-in-sylhet-343163.jpg"
+                                style="height: 430px">
+                            <img src="Images1/sylhet/Ratargul Swamp Forest, Sylhet(11).jpg" style="height: 430px">
+                            <img src="Images1/sylhet/Sylhet2.jpg" style="height: 430px">
+                            <img src="Images1/sylhet/Ratargul Swamp Forest, Sylhet (12).JPG" style="height: 430px">
+                        </div>
+                    </div>
+
+                    <div class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The dhaka</h1>
+                            <h2 class=" h1_info">Dhaka is the capital city of Bangladesh</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/dhaka/1484735672.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/dhaka/main-qimg-0c239c2785b0ca7071e57d17ff21bd10-c.jpg"
+                                style="height: 210px; width: 320px">
+                            <img src="Images1/dhaka/25c10333782950.56b81cc695b41.jpg"
+                                style="height: 210px; width: 320px">
+                            <img src="Images1/dhaka/dhaka-parliament.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/dhaka/Lalbager_Kella_01.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/dhaka/11257.jpg" style="height: 210px; width: 320px">
+                        </div>
+                    </div>
+
+                    <div class="shuffle-me">
+                        <a href="#" class="info a_info" target="_blank">
+                            <h1 class=" h1_info">The Kuakata</h1>
+                            <h2 class=" h1_info">Famous for its panoramic sea beach.</h2>
+                        </a>
+                        <div class="images">
+                            <img src="Images1/kuakata/download (1).jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/kuakata/download.jpg" style="height: 210px; width: 320px">
+                            <img src="Images1/kuakata/kuakata2.JPG" style="height: 210px; width: 320px">
+                            <img src="Images1/kuakata/kuakata2.JPGkuakata2.JPG" style="height: 210px; width: 320px">
+                            <img src="Images1/kuakata/01.jpg" style="height: 210px; width: 320px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 footer-col">
+                    <div href="../index.php" class="logofooter">IIUC SQL INJECTORS</div>
+
+                    <p><i class="fa fa-map-pin"></i> Chittagong, Bangladesh</p>
+                    <p><i class="fa fa-phone"></i> Phone (Bd) : +880 1521487511</p>
+                    <p><i class="fa fa-envelope"></i> E-mail : iiucbees@developer.com</p>
+
+                </div>
+                <div class="col-md-2 col-sm-6 footer-col">
+
+                </div>
+                <div class="col-md-3 col-sm-6 footer-col">
+                    <h6 class="heading7">LATEST POST</h6>
+                    <div class="post">
+                        <?php foreach ($allBlogPost as $singlePost) {
+                    $singleUserId = $singlePost->user_id;
+                    //var_dump($singleUserId);
+                    //$singleUserInfo = User::find_by_id($singleUserId);
+                    //var_dump($singleUserInfo);
+
+                    ?>
+                        <p><a style="text-decoration: none; text-transform: capitalize;color: #539684;"
+                                href="blog/viewSinglePost.php?user_id=<?php echo $singlePost->user_id; ?>&post_id=<?php echo $singlePost->id ?>">
+                                <h4 style="margin:0;"><?php echo $singlePost->blog_title; } ?></h4>
+                            </a></p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 footer-col">
+                    <h6 class="heading7">Social Media</h6>
+                    <ul class="footer-social">
+                        <li><i class="fa fa-linkedin social-icon linked-in" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-facebook social-icon facebook" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-twitter social-icon twitter" aria-hidden="true"></i></li>
+                        <li><i class="fa fa-google-plus social-icon google" aria-hidden="true"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer start from here-->
+
+    <?php require_once("copyright.php");?>
+    <!--Footer End-->
+
+
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script
+        src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjLtTeREHHcWmzQbD3pM46KRKud5Q5X-g&callback=initMap">
+    </script>
+
+
+    <script src="js/lightbox.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
